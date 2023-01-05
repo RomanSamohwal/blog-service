@@ -16,13 +16,13 @@ export class ValidateInputPipe extends ValidationPipe {
         throw new UnprocessableEntityException(
           // eslint-disable-next-line @typescript-eslint/ban-ts-comment
           // @ts-ignore
-          this.handleError(e.message?.message)
+          this.handleError(e.response.message)
         );
       }
     }
   }
 
   private handleError(errors) {
-    return errors.map((error) => error.constraints);
+    return errors.map((error) => error);
   }
 }
